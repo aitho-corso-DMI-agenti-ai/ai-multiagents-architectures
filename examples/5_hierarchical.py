@@ -6,7 +6,7 @@ app = marimo.App(width="medium")
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""# Supervisor tool Example""")
+    mo.md(r"""# Hierarchical tool Example""")
     return
 
 
