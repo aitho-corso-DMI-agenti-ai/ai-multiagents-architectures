@@ -28,7 +28,11 @@ Poetry is the dependency manager used in this project. Follow the [official inst
 poetry install
 ```
 
-### 3. Launch the Notebooks
+### 3. Setup Anthropic key
+
+Copy the file .env.example as .env and put your key in the ANTHROPIC_API_KEY field
+
+### 4. Launch the Notebooks
 Use Marimo to edit and run the notebooks:
 
 ```bash
