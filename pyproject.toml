@@ -1,0 +1,31 @@
+[project]
+name = "corso-agenti-dmi"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Gabriele Grillo"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<4.0.0"
+dependencies = [
+    "marimo (>=0.13.10,<0.14.0)",
+    "langchain-anthropic (>=0.3.13,<0.4.0)",
+    "langgraph (>=0.4.5,<0.5.0)",
+    "langgraph-swarm (>=0.0.11,<0.0.12)",
+    "langgraph-supervisor (>=0.0.23,<0.0.24)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.marimo.runtime]
+dotenv = [".env"]
+
+[tool.marimo.save]
+autosave = "after_delay"
+autosave_delay = 1000
