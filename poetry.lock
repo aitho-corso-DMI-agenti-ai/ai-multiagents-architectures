@@ -2062,14 +2062,14 @@ testing = ["pytest"]
 
 [[package]]
 name = "marimo"
-version = "0.13.10"
+version = "0.13.11"
 description = "A library for making reactive notebooks and apps"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "marimo-0.13.10-py3-none-any.whl", hash = "sha256:4b462052c9e939ddd2f60d1b279185ee9a209af1c3ec4ba9e8e236caedb4663b"},
-    {file = "marimo-0.13.10.tar.gz", hash = "sha256:b809d51773740885cf93b3cc65860b197b052fc7696b08fda1201231f30c904a"},
+    {file = "marimo-0.13.11-py3-none-any.whl", hash = "sha256:b91d1a2508a888488e7ec62fd3a0caefdb45b0347886bf03d426c469c6d93365"},
+    {file = "marimo-0.13.11.tar.gz", hash = "sha256:e83090aa51d1e95be0069e482dbb53e208f5232da9c8604c06582a42ce6e1aee"},
 ]
 
 [package.dependencies]
@@ -4632,4 +4632,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0.0"
-content-hash = "1442a3f2d5bfa1f1d67d0572a8e808d593f79449e086c5035e7f799614dd90c4"
+content-hash = "c8969249d352c0d9c5c167ecd1b87ec366a9b1b68d6de8f8ac44656b098c581b"
