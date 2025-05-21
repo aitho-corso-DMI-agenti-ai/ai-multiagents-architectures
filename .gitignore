@@ -2,3 +2,5 @@
 .venv
 __marimo__
 __pycache__
+artifacts
+mlflow.db
