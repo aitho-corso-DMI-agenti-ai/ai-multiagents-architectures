@@ -12,7 +12,10 @@ dependencies = [
     "langchain-anthropic (>=0.3.13,<0.4.0)",
     "langgraph (>=0.4.5,<0.5.0)",
     "langgraph-swarm (>=0.0.11,<0.0.12)",
-    "langgraph-supervisor (>=0.0.23,<0.0.24)"
+    "langgraph-supervisor (>=0.0.23,<0.0.24)",
+    "langchain (>=0.3.25,<0.4.0)",
+    "langchain-community (>=0.3.24,<0.4.0)",
+    "duckduckgo-search (>=8.0.2,<9.0.0)"
 ]
 
 [tool.poetry]
