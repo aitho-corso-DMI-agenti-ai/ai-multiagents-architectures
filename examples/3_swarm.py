@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.13.10"
+__generated_with = "0.13.11"
 app = marimo.App(width="medium")
 
 
@@ -11,12 +11,6 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _():
-    import marimo as mo
-    return (mo,)
-
-
-@app.cell
 def _(mo):
     mo.md(r"""## Define the imports""")
     return
@@ -60,7 +54,7 @@ def _(ChatAnthropic):
     return (model,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Create Yoda agent""")
     return
@@ -81,7 +75,7 @@ def _(create_handoff_tool, create_react_agent, model):
     return (yoda,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Create R2-D2 agent""")
     return
@@ -108,7 +102,7 @@ def _(create_handoff_tool, create_react_agent, model):
     return (r2d2,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Setup the graph""")
     return
@@ -126,7 +120,7 @@ def _(InMemorySaver, create_swarm, r2d2, yoda):
     return (app,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Visualize the graph""")
     return
@@ -152,6 +146,12 @@ def _(app):
 def _(print_messages, turn_1):
     print_messages(turn_1)
     return
+
+
+@app.cell(hide_code=True)
+def _():
+    import marimo as mo
+    return (mo,)
 
 
 if __name__ == "__main__":

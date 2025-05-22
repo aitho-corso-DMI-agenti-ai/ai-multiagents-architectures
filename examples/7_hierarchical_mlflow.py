@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.13.10"
+__generated_with = "0.13.11"
 app = marimo.App(width="medium")
 
 
@@ -11,12 +11,6 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _():
-    import marimo as mo
-    return (mo,)
-
-
-@app.cell
 def _(mo):
     mo.md(r"""## Define the imports""")
     return
@@ -38,7 +32,7 @@ def _():
     )
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Run MlFlow server and enable tracing""")
     return
@@ -91,13 +85,13 @@ def _(ChatAnthropic):
     return (model,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Rick & Morty team""")
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""### Create Morty agent""")
     return
@@ -120,7 +114,7 @@ def _(create_react_agent, model):
     return (morty_agent,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""### Create Mr. Meeseeks agent""")
     return
@@ -137,7 +131,7 @@ def _(create_react_agent, model):
     return (meeseeks_agent,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""### Create Rick supervisor""")
     return
@@ -159,13 +153,13 @@ def _(create_supervisor, meeseeks_agent, model, morty_agent):
     return (rick_agent,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Futurama Team""")
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""### Create Bender agent""")
     return
@@ -183,7 +177,7 @@ def _(create_react_agent, model):
     return (bender_agent,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""### Create Zoidberg agent""")
     return
@@ -201,7 +195,7 @@ def _(create_react_agent, model):
     return (zoidberg_agent,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""### Create Farnsworth supervisor""")
     return
@@ -224,7 +218,7 @@ def _(bender_agent, create_supervisor, model, zoidberg_agent):
     return (farnsworth_agent,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Coordinator""")
     return
@@ -248,7 +242,7 @@ def _(create_supervisor, farnsworth_agent, model, rick_agent):
     return (coordinator_agent,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Setup the graph""")
     return
@@ -261,7 +255,7 @@ def _(InMemorySaver, coordinator_agent):
     return (app,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Visualize the graph""")
     return
@@ -314,6 +308,12 @@ def _(app):
 def _(print_messages, turn_2):
     print_messages(turn_2)
     return
+
+
+@app.cell(hide_code=True)
+def _():
+    import marimo as mo
+    return (mo,)
 
 
 if __name__ == "__main__":

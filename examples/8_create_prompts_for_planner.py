@@ -4,17 +4,13 @@ __generated_with = "0.13.11"
 app = marimo.App(width="medium")
 
 
-@app.cell
-def _():
-    import marimo as mo
-    return (mo,)
-
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""# Register the prompts for the planner in MLFlow""")
     return
 
-@app.cell
+
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Run MlFlow server and configure it""")
     return
@@ -64,7 +60,7 @@ def _(mlflow):
         evaluator_prompt = """\
         Hai eseguito il task: '{{last_task}}' con risultato: '{{last_output}}'. Valuta se il task è andato a buon fine e, in caso negativo, fornisci la reason. Non valutare mai la correttezza delle date"
         """
-    
+
         # Register evaluator prompt
         prompt = mlflow.register_prompt(
             name="evaluator_prompt",
@@ -81,7 +77,7 @@ def _(mlflow):
                 "language": "it",
             },
         )
-    
+
         # The prompt object contains information about the registered prompt
         print(f"Created prompt '{prompt.name}' (version {prompt.version})")
 
@@ -163,18 +159,24 @@ def _(mlflow):
     return (register_prompts,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     register_prompts_button = mo.ui.run_button(label="Register prompts")
     register_prompts_button
     return (register_prompts_button,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(register_prompts, register_prompts_button):
     if register_prompts_button.value:
         print(register_prompts())
     return
+
+
+@app.cell
+def _():
+    import marimo as mo
+    return (mo,)
 
 
 if __name__ == "__main__":

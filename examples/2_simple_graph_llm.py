@@ -1,10 +1,10 @@
 import marimo
 
-__generated_with = "0.13.10"
+__generated_with = "0.13.11"
 app = marimo.App(width="medium")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
@@ -19,7 +19,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Define the imports""")
     return
@@ -33,7 +33,7 @@ def _():
     return ChatAnthropic, END, Graph, START, json
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Setup Anthropic model""")
     return
@@ -55,8 +55,8 @@ def _(ChatAnthropic):
 
 
 @app.cell(hide_code=True)
-def _():
-    ## Define the greeting node
+def _(mo):
+    mo.md(r"""## Define the greeting node""")
     return
 
 
@@ -78,8 +78,8 @@ def _(json, model):
 
 
 @app.cell(hide_code=True)
-def _():
-    ## Define the emoji node
+def _(mo):
+    mo.md(r"""## Define the emoji node""")
     return
 
 
@@ -148,13 +148,15 @@ def _(END, Graph, START, emoji_node, greeting_node):
     return (graph,)
 
 
-app._unparsable_cell(
-    r"""
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
     ## Compiling the graph
     Before we can execute a graph, we need to compile it
-    """,
-    column=None, disabled=False, hide_code=True, name="_"
-)
+    """
+    )
+    return
 
 
 @app.cell
@@ -176,8 +178,8 @@ def _(compiled_graph, mo):
 
 
 @app.cell(hide_code=True)
-def _():
-    ## Let's test it
+def _(mo):
+    mo.md(r"""## Let's test it""")
     return
 
 

@@ -11,12 +11,6 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _():
-    import marimo as mo
-    return (mo,)
-
-
-@app.cell
 def _(mo):
     mo.md(r"""## Define the imports""")
     return
@@ -53,7 +47,7 @@ def _():
     )
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Run MlFlow server and enable tracing""")
     return
@@ -106,7 +100,7 @@ def _(ChatAnthropic):
     return (model,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
@@ -146,7 +140,7 @@ def _(BaseModel, Optional):
     return (EvalResult,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Define planner agent""")
     return
@@ -163,13 +157,13 @@ def _(Plan, PlanExecState, model):
     return (plan_step,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Executor""")
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""### Define the search tool""")
     return
@@ -188,7 +182,7 @@ def _(DuckDuckGoSearchAPIWrapper, DuckDuckGoSearchRun, Tool):
     return (search_tool,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""### Define a fake tool to sens emails""")
     return
@@ -214,7 +208,7 @@ def _(tool):
     return (send_email,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""### Define executor agent""")
     return
@@ -241,7 +235,7 @@ def _(
 
     executor_user_prompt = mlflow.load_prompt("prompts:/executor_user_prompt/1")
     def exec_step(state: PlanExecState) -> dict:
-    
+
         task = state["plan"].pop(0)
         history = "\n".join([f"{i+1}. {t} -> {o}" for i, (t, o) in enumerate(state["past_steps"])])
         plan_text = history + f"\n{len(state['past_steps'])+1}. {task} -> TODO"
@@ -252,7 +246,7 @@ def _(
     return exec_step, executor_agent
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Evaluator""")
     return
@@ -276,7 +270,7 @@ def _(EvalResult, PlanExecState, mlflow, model):
     return (evaluate_task_step,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Finalize""")
     return
@@ -292,7 +286,7 @@ def _(PlanExecState):
     return (finalize,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""## Build the graph""")
     return
@@ -334,7 +328,7 @@ def _(
     return (app,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""##Visualize the graph""")
     return
@@ -346,7 +340,7 @@ def _(app, mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     mo.md(
         r"""
@@ -400,6 +394,12 @@ def _(executor_agent, run_agent, search_tool, send_email):
 def _(result):
     print(result['response'])
     return
+
+
+@app.cell(hide_code=True)
+def _():
+    import marimo as mo
+    return (mo,)
 
 
 if __name__ == "__main__":
