@@ -268,14 +268,23 @@ def _(app, mo):
 
 
 @app.cell
-def _(app):
+def _(mo):
+    user_prompt = mo.ui.text(value="What's 3 + 4?")
+    run_button = mo.ui.run_button()
+    user_prompt, run_button
+    return run_button, user_prompt
+
+
+@app.cell
+def _(app, mo, run_button, user_prompt):
+    mo.stop(not run_button.value, mo.md("Click 👆 to run this cell"))
 
     turn_1  = app.invoke(
         {
             "messages": [
                 {
                     "role": "user",
-                    "content": "What's 3 + 4?"
+                    "content": user_prompt.value
                 }
             ]
         }, 
@@ -286,27 +295,6 @@ def _(app):
 @app.cell
 def _(print_messages, turn_1):
     print_messages(turn_1)
-    return
-
-
-@app.cell
-def _(app):
-    turn_2 = app.invoke(
-        {
-            "messages": [
-                {
-                    "role": "user",
-                    "content": "I'm feeling bad to eat thrash"
-                }
-            ]
-        }
-    )
-    return (turn_2,)
-
-
-@app.cell
-def _(print_messages, turn_2):
-    print_messages(turn_2)
     return
 
 

@@ -382,10 +382,25 @@ def _(List, Optional, PlanExecState, Tool, app, mlflow):
 
 
 @app.cell
-def _(executor_agent, run_agent, search_tool, send_email):
+def _(mo):
+    user_prompt = mo.ui.text_area(value="Invia all'indirizzo email paperino@topolin.ia la popolazione della città con il grattacielo più alto del mondo", full_width=True)
+    run_button = mo.ui.run_button()
+    user_prompt, run_button
+    return run_button, user_prompt
 
 
-    query = "Invia all'indirizzo email paperino@topolin.ia la popolazione della città con il grattacielo più alto del mondo"
+@app.cell
+def _(
+    executor_agent,
+    mo,
+    run_agent,
+    run_button,
+    search_tool,
+    send_email,
+    user_prompt,
+):
+    mo.stop(not run_button.value, mo.md("Click 👆 to run this cell"))
+    query = user_prompt.value
     result = run_agent(query, executor_agent, tools=[search_tool, send_email])
     return (result,)
 

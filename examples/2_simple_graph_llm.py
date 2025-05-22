@@ -171,7 +171,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(compiled_graph, mo):
     mo.mermaid(compiled_graph.get_graph().draw_mermaid())
     return
@@ -183,10 +183,17 @@ def _(mo):
     return
 
 
-@app.cell
-def _(compiled_graph):
-    tests = ["Mario", "Gabriele", "Pippo"]
+@app.cell(hide_code=True)
+def _(mo):
+    run_button = mo.ui.run_button()
+    run_button
+    return (run_button,)
 
+
+@app.cell
+def _(compiled_graph, mo, run_button):
+    mo.stop(not run_button.value, mo.md("Click 👆 to run this cell"))
+    tests = ["Mario", "Gabriele", "Pippo"]
     for user in tests:
         result = compiled_graph.invoke({"name_input": user})
         print(f"Input={user} -> {result.get('text')}")

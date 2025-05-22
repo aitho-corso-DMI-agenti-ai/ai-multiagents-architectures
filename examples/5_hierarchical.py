@@ -229,21 +229,30 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(app, mo):
     mo.mermaid(app.get_graph(xray=True).draw_mermaid())
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    user_prompt_1 = mo.ui.text(value="What's 3 + 4?")
+    run_button_1 = mo.ui.run_button()
+    user_prompt_1, run_button_1
+    return run_button_1, user_prompt_1
+
+
 @app.cell
-def _(app):
+def _(app, mo, run_button_1, user_prompt_1):
+    mo.stop(not run_button_1.value, mo.md("Click 👆 to run this cell"))
 
     turn_1  = app.invoke(
         {
             "messages": [
                 {
                     "role": "user",
-                    "content": "What's 3 + 4?"
+                    "content": user_prompt_1.value
                 }
             ]
         }, 
@@ -257,14 +266,24 @@ def _(print_messages, turn_1):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    user_prompt_2 = mo.ui.text(value="I'm feeling bad to eat thrash")
+    run_button_2 = mo.ui.run_button()
+    user_prompt_2, run_button_2
+    return run_button_2, user_prompt_2
+
+
 @app.cell
-def _(app):
+def _(app, mo, run_button_2, user_prompt_2):
+    mo.stop(not run_button_2.value, mo.md("Click 👆 to run this cell"))
+
     turn_2 = app.invoke(
         {
             "messages": [
                 {
                     "role": "user",
-                    "content": "I'm feeling bad to eat thrash"
+                    "content": user_prompt_2.value
                 }
             ]
         }

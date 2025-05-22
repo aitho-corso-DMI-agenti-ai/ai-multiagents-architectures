@@ -133,18 +133,27 @@ def _(app, mo):
 
 
 @app.cell
-def _(app):
-    config = {"configurable": {"thread_id": "42"}}
-    turn_1 = app.invoke(
-        {"messages": [{"role": "user", "content": "What's 10+4?"}]},
-        config,
-    )
-    return (turn_1,)
+def _(mo):
+    user_prompt = mo.ui.text(value="What's 10+4?")
+    run_button = mo.ui.run_button()
+    user_prompt, run_button
+    return run_button, user_prompt
 
 
 @app.cell
-def _(print_messages, turn_1):
-    print_messages(turn_1)
+def _(app, mo, run_button, user_prompt):
+    mo.stop(not run_button.value, mo.md("Click 👆 to run this cell"))
+    config = {"configurable": {"thread_id": "42"}}
+    turn = app.invoke(
+        {"messages": [{"role": "user", "content": user_prompt.value}]},
+        config,
+    )
+    return (turn,)
+
+
+@app.cell
+def _(print_messages, turn):
+    print_messages(turn)
     return
 
 
