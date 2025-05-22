@@ -9,10 +9,14 @@ def _():
     import marimo as mo
     return (mo,)
 
+@app.cell
+def _(mo):
+    mo.md(r"""# Register the prompts for the planner in MLFlow""")
+    return
 
 @app.cell
 def _(mo):
-    mo.md(r"""## Run MlFlow server and enable tracing""")
+    mo.md(r"""## Run MlFlow server and configure it""")
     return
 
 
@@ -35,9 +39,6 @@ def _():
 
     import mlflow
     mlflow.set_tracking_uri("http://localhost:5000")
-    mlflow.config.enable_async_logging()
-    mlflow.langchain.autolog(exclusive=False)
-
 
     return avvia_mlflow_server, mlflow
 

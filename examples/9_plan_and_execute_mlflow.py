@@ -6,7 +6,7 @@ app = marimo.App(width="medium")
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""# Plan and execute architecture Example""")
+    mo.md(r"""# Plan and execute architecture Example with MLFlow tracing and prompts""")
     return
 
 
@@ -18,8 +18,7 @@ def _():
 
 @app.cell
 def _(mo):
-    mo.md(r"""## Imports""")
-    
+    mo.md(r"""## Define the imports""")
     return
 
 

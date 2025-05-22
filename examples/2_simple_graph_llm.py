@@ -19,9 +19,9 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
-def _():
-    ## Define the imports
+@app.cell
+def _(mo):
+    mo.md(r"""## Define the imports""")
     return
 
 

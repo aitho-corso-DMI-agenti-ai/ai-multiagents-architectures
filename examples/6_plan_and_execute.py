@@ -17,8 +17,8 @@ def _():
 
 
 @app.cell
-def _():
-    ## Imports
+def _(mo):
+    mo.md(r"""## Define the imports""")
     return
 
 
@@ -27,7 +27,7 @@ def _():
     from langchain_anthropic import ChatAnthropic
     from langgraph.prebuilt import create_react_agent
     from langgraph.graph import StateGraph, END
-    from langchain_community.tools import DuckDuckGoSearchResults, DuckDuckGoSearchRun, Tool
+    from langchain_community.tools import DuckDuckGoSearchRun, Tool
     from langchain_community.utilities import DuckDuckGoSearchAPIWrapper
     from typing import List, TypedDict, Tuple, Annotated, Optional
     from pydantic import BaseModel, Field

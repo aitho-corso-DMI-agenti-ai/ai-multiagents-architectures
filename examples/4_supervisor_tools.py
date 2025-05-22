@@ -17,8 +17,8 @@ def _():
 
 
 @app.cell
-def _():
-    ## Imports
+def _(mo):
+    mo.md(r"""## Define the imports""")
     return
 
 

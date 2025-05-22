@@ -6,7 +6,7 @@ app = marimo.App(width="medium")
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""# Hierarchical tool Example with MlFLow""")
+    mo.md(r"""# Hierarchical tool Example with MlFLow tracing""")
     return
 
 
@@ -17,8 +17,8 @@ def _():
 
 
 @app.cell
-def _():
-    ## Imports
+def _(mo):
+    mo.md(r"""## Define the imports""")
     return
 
 
