@@ -6,7 +6,25 @@ app = marimo.App(width="medium")
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""# Supervisor tool Example""")
+    mo.md(
+        r"""
+    # Supervisor tool Example
+    This notebook illustrates how to create a supervised multi-agent system using `LangGraph`, `LangChain`, and the Claude 3.5 Haiku model from Anthropic. It features a fun and instructive interaction between three agents from the *Rick and Morty universe*:
+
+    - **Rick** acts as the **supervising agent**, receiving all user inputs and delegating tasks to the appropriate agents.
+    - **Morty** handles **math problems**, reflecting his anxious but compliant personality.
+    - **Mr. Meeseeks** provides **motivation and encouragement**, staying true to his enthusiastic, help-driven nature.
+
+    Key Features:
+
+    - Uses `create_supervisor()` to route tasks dynamically based on user input.
+    - Demonstrates **agent orchestration**, with the supervisor selecting which sub-agent should handle each task.
+    - Employs Claude's Haiku model for character-based reasoning and tool use.
+    - Allows users to input different queries (math vs. emotional support) to see how the supervisor delegates and responds.
+
+    This setup is a great example of **agent delegation logic, thematic character prompting**, and **tool-enhanced natural language workflows**.
+    """
+    )
     return
 
 

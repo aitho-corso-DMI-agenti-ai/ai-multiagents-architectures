@@ -6,7 +6,26 @@ app = marimo.App(width="medium")
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""# Network/Swarm Example""")
+    mo.md(
+        r"""
+    # Network/Swarm Example
+    This notebook demonstrates a playful yet insightful example of multi-agent communication using `LangGraph`, `LangChain`, and the Anthropic Claude model. 
+
+    Two fictional agents —**Yoda** and **R2-D2**— are implemented to showcase agent coordination through a swarm-like structure.
+
+    - Yoda acts as a wise Jedi master, capable of "using the Force" and interpreting binary beeps from R2-D2.
+    - R2-D2, on the other hand, communicates only through beeps ("BEEP" for 1, "BOOP" for 0), can perform basic arithmetic, and encodes answers in binary.
+
+    Key features:
+
+    - Uses the Claude 3.5 Haiku model via LangChain.
+    - Implements a simple `create_swarm()` setup with agent handoff tools for dynamic task delegation.
+    - Demonstrates inter-agent communication and translation between binary and human-readable responses.
+    - Includes UI elements for user input and visualization of the agent graph using Mermaid diagrams.
+
+    This is a creative and interactive example for exploring multi-agent orchestration, tool use, and character-based prompt engineering.
+    """
+    )
     return
 
 
@@ -126,13 +145,13 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(app, mo):
     mo.mermaid(app.get_graph().draw_mermaid())
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     user_prompt = mo.ui.text(value="What's 10+4?")
     run_button = mo.ui.run_button()

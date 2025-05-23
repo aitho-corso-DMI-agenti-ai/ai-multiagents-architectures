@@ -6,7 +6,53 @@ app = marimo.App(width="medium")
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""# Plan and execute architecture Example""")
+    mo.md(
+        r"""
+    # Plan and execute architecture Example
+
+    This notebook demonstrates a Plan-and-Execute architecture using `LangGraph`, `LangChain`, and Claude 3.5 Haiku to handle complex tasks by breaking them down into actionable steps. It’s ideal for cases where execution involves multiple tools and requires evaluation after each step.
+
+    ##💡 **Architecture Overview**
+    The system is composed of 4 core components, organized into a stateful graph:
+
+    1. **Planner Agent**
+        - Uses the model with structured output to create a `Plan`, a step-by-step breakdown of a user request.
+        - Returns a list of action steps that will be sequentially executed.
+
+    2. **Executor Agent**
+        - Executes one task at a time using available tools:
+            - **Web Search Tool** (via DuckDuckGo)
+            - **Send Email Tool** (mocked for demonstration)
+        - Maintains a strict, instruction-following behavior — no improvisation or chatbot-like output.
+
+    3. **Evaluator Agent**
+        - Checks whether the **last executed step** was successful.
+        - If not, provides a reason (but ignores subjective judgment, like correctness of dates).
+        - Determines if another step should be run or if execution should stop.
+
+    4. **Finalizer**
+        - Collects and compiles the results from all completed steps into a final response string.
+
+    ## 🔁 Graph Execution Flow
+    A `StateGraph` defines the state transitions:
+
+    - Starts at the `planner`
+    - Then flows to the `executor`
+    - Then to the `task_evaluator`
+    - Based on the outcome:
+        - Returns to the `executor` if more steps remain
+        - Ends with `finalize` if all steps are done or something fails
+
+    ## 🧠 What It Enables
+
+    - Breaks down natural language objectives into precise, tool-executable steps
+    - Enables **conditional retrying** and **evaluation logic** after each step
+    - Clean separation between planning, execution, and evaluation
+    - Tool-agnostic: easily extendable with more tools
+    ---
+    This notebook is a compact, functional prototype of a **real-world automation assistant** capable of decomposing, executing, and validating multi-step tasks using external tools and smart logic.
+    """
+    )
     return
 
 
@@ -298,7 +344,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(app, mo):
     mo.mermaid(app.get_graph().draw_mermaid())
     return

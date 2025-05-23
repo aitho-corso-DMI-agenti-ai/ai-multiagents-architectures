@@ -6,7 +6,42 @@ app = marimo.App(width="medium")
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""# Hierarchical Example""")
+    mo.md(
+        r"""
+    # Hierarchical Example
+    This notebook presents a sophisticated **hierarchical agent architecture**, combining multiple character-based teams under a central coordinator. Using `LangGraph`, `LangChain`, and the Claude 3.5 Haiku model, it explores how structured agent delegation can scale in complexity while remaining transparent and interactive.
+
+    ## **Structure**
+    The system includes **two themed supervisory teams**:
+
+    🧪 **Rick & Morty Team (Team Rick)**
+
+    - **Rick**: Acts as the team supervisor, routing tasks based on content (math to Morty, emotional support to Mr. Meeseeks).
+    - **Morty**: Nervously handles math operations.
+    - **Mr. Meeseeks**: Offers motivational and explanatory responses.
+
+    🚀 **Futurama Team (Team Farnsworth)**
+
+    - **Professor Farnsworth**: Supervises and routes tasks to his team.
+    - **Bender**: Handles logic problems with sarcasm.
+    - **Dr. Zoidberg**: Provides bizarre but well-meaning emotional support.
+
+    🧠 **Central Control**
+
+    - A neutral **Coordinator Agent** that receives all user requests and delegates to either the Rick team or the Futurama team, based on topic:
+        - **Math/personal/fun** → Rick
+        - **Science/emotional/logical** → Futurama
+
+    ## **Features**
+
+    - Demonstrates **nested agent supervision**, where supervisors report to a higher-level coordinator.
+    - Offers **modular agent design** with clear separation of responsibility.
+    - Characters maintain their personas through tailored prompts and tool assignments.
+    - Users can interact with the system to see how delegation decisions are made and how final responses are composed.
+
+    This notebook is an engaging, character-driven showcase of **scalable, hierarchical multi-agent orchestration**, ideal for exploring real-world analogs like task routing, customer service triage, or decision trees.
+    """
+    )
     return
 
 
